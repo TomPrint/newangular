@@ -9,6 +9,7 @@ import { Userdata } from '../../models/userdata';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatButtonModule,
     MatCardModule,
     MatSnackBarModule,
-    MatToolbarModule
+     MatToolbarModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -29,17 +30,21 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 export class LoginComponent {
   userData: Userdata = { email: '', password: '' }; 
 
-  constructor(private authService: AuthService, private snackBar: MatSnackBar) {} 
+  constructor(private authService: AuthService, private snackBar: MatSnackBar, private router: Router) {} 
 
   onSubmit() {
     this.authService.login(this.userData)
       .then(() => {
-        this.snackBar.open('Login successful!', 'Close', { duration: 2000 });
+        this.snackBar.open('Login successful!', 'Close', { duration: 5000 });
+        this.router.navigate(['/']);
       })
       .catch(error => {
-        this.snackBar.open('Login failed: Email or Password Incorrect' + error, 'Close', { duration: 2000 });
+        this.snackBar.open('Login failed: Email or Password Incorrect', 'Close', { duration: 5000 });
+        console.error(error);
       });
   }
+
+
 }
 
 
