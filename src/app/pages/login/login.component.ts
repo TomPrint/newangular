@@ -4,6 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { Userdata } from '../../models/userdata';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
@@ -19,7 +20,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatToolbarModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -35,7 +37,7 @@ export class LoginComponent {
         this.snackBar.open('Login successful!', 'Close', { duration: 2000 });
       })
       .catch(error => {
-        this.snackBar.open('Login failed: Email or Password Incorrect', 'Close', { duration: 2000 });
+        this.snackBar.open('Login failed: Email or Password Incorrect' + error, 'Close', { duration: 2000 });
       });
   }
 }
