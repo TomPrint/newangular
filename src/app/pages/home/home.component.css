@@ -1,0 +1,15 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .title-container {
+    text-align: center; 
+    width: 100%; 
+  }
+  
+  .button-container {
+    text-align: center; 
+    width: 100%; 
+  }
+  
