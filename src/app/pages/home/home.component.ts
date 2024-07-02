@@ -36,6 +36,8 @@ export class HomeComponent implements AfterViewInit {
                 "title": "Sleepy Hollow",
                 "hfov": 110,
                 "pitch": -3,
+                "minPitch":-60,
+                "maxPitch":60,
                 "yaw": 117,
                 "type": "equirectangular",
                 "panorama": "https://i.imgur.com/7HLdNDE.jpeg",
@@ -51,16 +53,21 @@ export class HomeComponent implements AfterViewInit {
                       "pitch": -15.0,
                       "yaw": 150.0,
                       "type": "info",
-                      "text": "Headless Horseman Museum"
+                      "text": "Headless Horseman Museum",
+                      
                   },
                   {
                     "pitch": -30.0,
-                    "yaw": 197.0,
-                    "type": "info",
-                    "text": "Prison Tower"
-                }
+                    "yaw": 198.0,
+                    "type": "custom",
+                    "createTooltipFunc": this.createCustomTooltip,
+                    "createTooltipArgs": {
+                      "text": "Prison Tower",
+                      "icon": "account_balance"
+                    }
+                  }
                 ]
-            },
+              },
             "river": {
                 "title": "Hudson River",
                 "hfov": 110,
@@ -81,6 +88,23 @@ export class HomeComponent implements AfterViewInit {
             }
         }
     });
+}
+
+createCustomTooltip(hotSpotDiv:any, args:any) {
+  hotSpotDiv.classList.add('custom-hotspot');
+  hotSpotDiv.innerHTML = `
+      <i class="material-icons" style="color: red; font-size: 34px">${args.icon}</i>
+      <div class="tooltip-text" style="visibility: hidden; color: red; font-size: 16px;">${args.text}</div>
+  `;
+
+
+  const tooltipText = hotSpotDiv.querySelector('.tooltip-text');
+  hotSpotDiv.addEventListener('mouseover', () => {
+      tooltipText.style.visibility = 'visible';
+  });
+  hotSpotDiv.addEventListener('mouseout', () => {
+      tooltipText.style.visibility = 'hidden';
+  });
 }
 
   logout(): void {
