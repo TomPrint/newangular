@@ -27,7 +27,9 @@ export class HomeComponent implements AfterViewInit {
         "default": {
             "firstScene": "city",
             "author": "Angular Virtual Tour",
-            "sceneFadeDuration": 1000
+            "sceneFadeDuration": 500,
+            "preview": "/assets/panorama_preview.jpg"
+          
         },
         "scenes": {
             "city": {
@@ -40,23 +42,35 @@ export class HomeComponent implements AfterViewInit {
                 "hotSpots": [
                     {
                         "pitch": -4.0,
-                        "yaw": 2490.00,
+                        "yaw": -30,
                         "type": "scene",
                         "text": "Hudson River",
                         "sceneId": "river"
-                    }
+                    },
+                    {
+                      "pitch": -15.0,
+                      "yaw": 150.0,
+                      "type": "info",
+                      "text": "Headless Horseman Museum"
+                  },
+                  {
+                    "pitch": -30.0,
+                    "yaw": 197.0,
+                    "type": "info",
+                    "text": "Prison Tower"
+                }
                 ]
             },
             "river": {
                 "title": "Hudson River",
                 "hfov": 110,
-                "yaw": 5,
+                "yaw": 1,
                 "type": "equirectangular",
                 "panorama": "https://i.imgur.com/mRGAw5K.jpeg",
                 "hotSpots": [
                     {
                         "pitch": 0.0,
-                        "yaw": 2349.0,
+                        "yaw": 189,
                         "type": "scene",
                         "text": "Sleepy Holow",
                         "sceneId": "city",
